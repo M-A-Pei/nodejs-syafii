@@ -52,7 +52,7 @@ const deleteList = (nama) =>{
         if(element.nama === nama){
             file.splice(i, 1);
             fs.writeFileSync("./contacts.json", JSON.stringify(file));
-            console.log(chalk `{bgRed.black ${element.nama} telah di hapus}`);
+            console.log(chalk `{bgRed.black ${element.nama} telah di hapus dari daftar contact}`);
         }
     });
 }
