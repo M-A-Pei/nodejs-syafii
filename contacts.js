@@ -21,7 +21,7 @@ const rl = readline.createInterface({
 
 const pertanyaan = (p) => {
     return new Promise((resolve, reject) => {
-        rl.question(question("${p} \n"), (name) => {
+        rl.question(question(`${p} \n`), (name) => {
             resolve(name);
         });
     });
