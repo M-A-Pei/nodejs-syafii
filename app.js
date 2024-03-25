@@ -4,35 +4,16 @@ const yargs = require("yargs");
 yargs.command({
     command: "add",
     describe: "tambahin contact baru",
-    builder: {
-        nama: {
-            demandOption: true,
-            describe: "nama lengkap mu",
-            type: "string",
-        },
-        umur: {
-            demandOption: true,
-            describe: "umur mu",
-            type: "int",
-        },
-        email: {
-            demandOption: true,
-            describe: "alamat email mu",
-            type: "string",
-        },
-        no: {
-            demandOption: true,
-            describe: "nomor Hp mu",
-            type: "string",
-        }
-    },handler(argv){
-        let data = {
-            nama : argv.nama,
-            umur : argv.umur,
-            email : argv.email,
-            no : argv.no
-        }
-        contacts.simpanContact(data);
+    handler(){
+        (async function(){
+            let nama = await contacts.pertanyaan("siapa nama mu?");
+            let umur = await contacts.pertanyaan("kamu berapa tahun?");
+            let email = await contacts.pertanyaan("email kamu apa?");
+            let no = await contacts.pertanyaan("nomor hp kamu apa?");
+            data = {nama, umur, email, no}
+
+            contacts.simpanContact(data);
+        })();
     }
 })
 
